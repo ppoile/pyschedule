@@ -92,12 +92,12 @@ class MIP(object):
 		elif kind == 'CBC' or kind == 'COIN':
 			options = []
 			if time_limit is not None:
-				options.extend(['sec', str(time_limit)])
+				options.append('sec ' + str(time_limit))
 			if random_seed is not None:
-				options.extend(['randomSeed', str(random_seed)])
-				options.extend(['randomCbcSeed', str(random_seed)])
+				options.append('randomSeed ' + str(random_seed))
+				options.append('randomCbcSeed ' + str(random_seed))
 			if ratio_gap is not None:
-				options.extend(['ratio', str(ratio_gap)])
+				options.append('ratio ' + str(ratio_gap))
 			if kind == 'CBC':
 				self.mip.solve(pl.PULP_CBC_CMD(msg=msg, options=options))
 			elif kind == 'COIN':
